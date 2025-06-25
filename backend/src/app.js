@@ -1,6 +1,6 @@
 import express from "express";
-
-
+import UserRouter from "./user/user.router.js";
+import DB from "./config/db.config.js";
 
 
 class App {
@@ -8,16 +8,24 @@ class App {
 
     constructor(){
         this.app = express();
-        
+        this.config();
+        this.middlewares();
+        this.routes();
 
     }
 
-    config(){
+    async config(){        
+        await DB.Conn();
         
     }
 
     middlewares(){
         this.app.use(express.json());
+
+    }
+
+    routes(){
+        this.app.use('/api/user', UserRouter)
     }
 
 
