@@ -1,6 +1,7 @@
 import express from "express";
 import UserRouter from "./user/user.router.js";
 import DB from "./config/db.config.js";
+import cookieParser from "cookie-parser";
 
 
 class App {
@@ -20,8 +21,9 @@ class App {
     }
 
     middlewares(){
-        this.app.use(express.json());
 
+        this.app.use(express.json());
+        this.app.use(cookieParser());
     }
 
     routes(){

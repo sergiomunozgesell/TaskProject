@@ -11,7 +11,8 @@ class UserRouter{
 
     setRoutes(){
 
-        // RUTA TEST PARA COMPROBAR FUNCIONALIDAD DE QUE ESTA FUNCIONANDO
+        // RUTA TEST PARA COMPROBAR FUNCIONALIDAD.
+        this.router.get('/users', UserControll.getUsers);
         this.router.get('/test', (req,res)=>{
             try {
 
@@ -23,12 +24,15 @@ class UserRouter{
         })
         // POST TESTER
         this.router.post('/testpost',UserControll.TESTER)
+
+        //////////////////////////////////////////////////////
         // RUTAS:
         /**** GET ***********/
         this.router.get('/home',UserControll.Home);
         
         /*** POST **********/
         this.router.post('/register',UserControll.Register);
+        this.router.post('/login', UserControll.Login);
     }
 
     getRouter(){
