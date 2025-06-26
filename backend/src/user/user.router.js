@@ -1,5 +1,6 @@
 import express from "express";
 import UserControll from "./user.controll.js";
+import AuthMiddleware from "../middlewares/auth.middleware.js";
 
 class UserRouter{
 
@@ -28,7 +29,7 @@ class UserRouter{
         //////////////////////////////////////////////////////
         // RUTAS:
         /**** GET ***********/
-        this.router.get('/home',UserControll.Home);
+        this.router.get('/home', AuthMiddleware.authRouter ,UserControll.Home);
         
         /*** POST **********/
         this.router.post('/register',UserControll.Register);
